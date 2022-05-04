@@ -27,7 +27,7 @@
 
 ## Flow Chart
 
-![image-20220504161524758](C:\Users\Junyong\AppData\Roaming\Typora\typora-user-images\image-20220504161524758.png)
+![image-20220504161524758](https://user-images.githubusercontent.com/55189658/166639055-19f8c146-4eb5-4fb8-a63b-951d5edbec47.png)
 
 
 
