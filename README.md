@@ -16,7 +16,7 @@
 
 - IDE - Intellij
 - Server : Springboot + Spring Data JPA
-- Front-end : react
+- Front-end : React
 
 - DB : MySQL
 
