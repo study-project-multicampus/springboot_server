@@ -9,6 +9,7 @@
   - 여동엽
   - 정민우
   - 최준용(팀장)
+- [API Documents](https://github.com/study-project-multicampus/springboot_server/wiki)
 - ERD
   - https://www.erdcloud.com/d/9qKnQaNNNGd7tdzLB
 
