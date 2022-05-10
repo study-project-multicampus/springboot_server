@@ -25,7 +25,7 @@ public class JwtAuthenticationController {
     @PostMapping("/authenticate")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
         final Member member = userDetailService.authenticateByNameAndPassword
-                (authenticationRequest.getEmail(), authenticationRequest.getPassword());
+                (authenticationRequest.getMemberName(), authenticationRequest.getMemberPw());
         final String token = jwtTokenUtil.generateToken(member.getMemberName());
         return ResponseEntity.ok(new JwtResponse(token));
     }
@@ -35,8 +35,8 @@ public class JwtAuthenticationController {
 @Data
 class JwtRequest {
 
-    private String email;
-    private String password;
+    private String memberName;
+    private String memberPw;
 
 }
 

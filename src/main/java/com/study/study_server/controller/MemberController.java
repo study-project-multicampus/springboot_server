@@ -35,7 +35,7 @@ public class MemberController {
         BeanUtils.copyProperties(memberForm, member);
         memberService.insertMember(member);
 
-        model.addAttribute("study", studyService.selectAllStudy());
+//        model.addAttribute("study", studyService.selectAllStudy());
         return studylist;
     }
 
