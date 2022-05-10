@@ -1,5 +1,6 @@
 package com.study.study_server.service;
 
+import com.study.study_server.domain.Member;
 import com.study.study_server.domain.Study;
 import com.study.study_server.exception.ResourceNotFoundException;
 import com.study.study_server.repository.StudyRepository;
@@ -17,6 +18,17 @@ public class StudyService {
 
 
     private final StudyRepository studyRepository;
+
+
+    public Study createStudy(Member member,String name, String start){
+        Study study = new Study();
+        study.setMember(member);
+        study.setName(name);
+        study.setStart(start);
+
+        studyRepository.save(study);
+        return study;
+    }
 
 
 
