@@ -28,10 +28,9 @@ public class Member {
     @Column(name = "member_email")
     private String memberEmail;
 
-    public Member(int memberNo, String memberName, String memberEmail, String memberPw) {
-        this.memberNo = memberNo;
+    public Member(String memberName, String memberEmail, String memberPw) {
         this.memberName = memberName;
-        this.memberPw = memberEmail;
+        this.memberPw = memberPw;
         this.memberEmail = memberEmail;
     }
 }

@@ -1,7 +1,7 @@
 package com.study.study_server.controller;
 
 import com.study.study_server.config.JwtTokenUtil;
-import com.study.study_server.config.JwtUserDetailsService;
+import com.study.study_server.service.JwtUserDetailsService;
 import com.study.study_server.domain.Member;
 import lombok.AllArgsConstructor;
 import lombok.Data;

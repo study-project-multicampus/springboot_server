@@ -1,4 +1,4 @@
-package com.study.study_server.config;
+package com.study.study_server.service;
 
 import com.study.study_server.domain.Member;
 import com.study.study_server.domain.Role;
@@ -28,7 +28,7 @@ public class JwtUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String memberName) throws UsernameNotFoundException {
-        Member member = memberRepository.findByName(memberName)
+        Member member = memberRepository.findByMemberName(memberName)
                 .orElseThrow(() -> new UsernameNotFoundException(memberName));
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
         grantedAuthorities.add(new SimpleGrantedAuthority(Role.USER.getValue()));
@@ -40,7 +40,7 @@ public class JwtUserDetailsService implements UserDetailsService {
     }
 
     public Member authenticateByNameAndPassword(String memberName, String memberPw) {
-        Member member = memberRepository.findByName(memberName)
+        Member member = memberRepository.findByMemberName(memberName)
                 .orElseThrow(() -> new UsernameNotFoundException(memberName));
 
         if (!passwordEncoder.matches(memberPw, member.getMemberPw())) {
