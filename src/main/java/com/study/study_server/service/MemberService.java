@@ -19,6 +19,15 @@ public class MemberService {
     public Member save(Member member){
         return memberRepository.save(member);
     }
+    public Member insertMember(Member member){
+        return memberRepository.save(member);
+    }
+    @Transactional(readOnly = true)
+    public Member selectMemeber(String memberName){
+        Optional<Member> optionalMember = memberRepository.findByMemberName(memberName);
+        Member existMember = optionalMember.orElseThrow(() -> new ResourceNotFoundException("Member", "memberName", memberName));
+        return existMember;
+    }
 
 
 }

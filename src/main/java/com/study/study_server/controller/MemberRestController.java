@@ -2,12 +2,13 @@ package com.study.study_server.controller;
 
 import com.study.study_server.domain.Member;
 import com.study.study_server.service.MemberService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/member")
 public class MemberRestController {
-    private MemberService memberService;
+    private  MemberService memberService;
 
     public MemberRestController(MemberService memberService){
         this.memberService = memberService;
