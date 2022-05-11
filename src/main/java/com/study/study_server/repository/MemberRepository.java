@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import javax.persistence.Id;
 import java.util.Optional;
 
-public interface MemberRepository extends JpaRepository<Member, Id> {
+public interface MemberRepository extends JpaRepository<Member, Long> {
     Member findByMemberId(Long MemberId);
 
     // 회원 생성
