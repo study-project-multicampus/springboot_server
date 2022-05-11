@@ -20,11 +20,6 @@ public class MemberService {
     public Member save(Member member){
         return memberRepository.save(member);
     }
-
-    @Transactional
-    public Member save(Member member){
-        return memberRepository.save(member);
-    }
     public Member insertMember(Member member){
         return memberRepository.save(member);
     }
