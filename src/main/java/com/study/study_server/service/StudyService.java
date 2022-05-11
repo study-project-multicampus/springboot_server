@@ -26,7 +26,8 @@ public class StudyService {
         Member member = memberRepository.findById(reader_id);
         study.leaderMember(member);
 
-        Study_Join.createStudyJoin(study,member);
+       Study_Join.createStudyJoin(study, member);
+
 
         studyRepository.save(study);
 
@@ -39,7 +40,9 @@ public class StudyService {
         Member member = memberRepository.findById(member_id);
         Study study= studyRepository.findById(study_id);
 
-        Study_Join.createStudyJoin(study,member);
+        Study_Join studyJoin = Study_Join.createStudyJoin(study, member);
+        study.addStudyJoin(studyJoin);
+
         return study;
 
     }

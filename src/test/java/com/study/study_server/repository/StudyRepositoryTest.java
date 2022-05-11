@@ -85,6 +85,32 @@ class StudyRepositoryTest {
 
 
 
+        //두번째 스터디 만들기
+        Study java = new Study();
+        java.setName("자바스터디");
+        java.setStart("2022-01-01");
+
+        //두번째 스터디 리더 만들기
+        Member reader = new Member();
+        reader.setName("shin");
+        reader.setEmail("tt.@aver.com");
+        memberService.save(reader);
+
+        Long enroll_id2 = studyService.enroll(java, reader.getId());
+
+
+        //두번째 스터디 참가원
+
+        Member member4 = new Member();
+        member4.setName("hong");
+        member4.setEmail("hong@naver.com");
+        memberService.save(member4);
+
+        studyService.joinStudy(member4.getId(),enroll_id2 );
+
+
+
+
 
 
     }
