@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import java.util.Optional;
 
 public interface MemberRepository extends JpaRepository<Member, Id> {
-    Member findById(Long id);
+    Member findByMemberId(Long MemberId);
 
     // 회원 생성
     Member save(Member member);
