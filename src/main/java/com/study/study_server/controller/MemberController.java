@@ -36,7 +36,7 @@ public class MemberController {
         memberService.insertMember(member);
 
 //        model.addAttribute("study", studyService.selectAllStudy());
-        return studylist;
+        return null;
     }
 
 }

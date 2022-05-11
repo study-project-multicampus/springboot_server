@@ -40,17 +40,9 @@ public class JwtTokenUtil {
         return getClaimFromToken(token, Claims::getExpiration);
     }
 
-    public String generateToken(String id) {
-        return generateToken(id, new HashMap<>());
-    }
-
-    public String generateToken(String id, Map<String, Object> claims) {
-        return doGenerateToken(id, claims);
-    }
-
-    private String doGenerateToken(String id, Map<String, Object> claims) {
+    public String doGenerateToken(String id) {
+        Map<String, Object> claims = new HashMap<>();
         return Jwts.builder()
-                .setClaims(claims)
                 .setId(id)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
