@@ -33,10 +33,10 @@ public class MemberController {
 
         Member member = new Member();
         BeanUtils.copyProperties(memberForm, member);
-        memberService.insertMember(member);
+        memberService.save(member);
 
 //        model.addAttribute("study", studyService.selectAllStudy());
-        return studylist;
+        return "studylist";
     }
 
 }

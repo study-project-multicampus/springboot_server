@@ -3,10 +3,10 @@ package com.study.study_server.domain;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @Entity
 @Getter
@@ -22,6 +22,25 @@ public class Study {
 
     @Column(name = "study_start")
     private String start;
+
+   @ManyToOne(fetch = FetchType.LAZY)
+   @JoinColumn(name = "leader_id")
+   private Member leader;
+
+   @OneToMany(mappedBy = "study",cascade = CascadeType.ALL)
+    private List<Study_Join> study_joins = new ArrayList<>();
+
+   public void addStudyJoin(Study_Join study_join){
+       study_joins.add(study_join);
+       study_join.setStudy(this);
+   }
+   public void leaderMember(Member member){
+       leader = member;
+       member.getLearningStudy().add(this);
+   }
+
+
+
 
 
 }
