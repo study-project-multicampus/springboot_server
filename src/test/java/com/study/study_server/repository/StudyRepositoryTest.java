@@ -52,8 +52,8 @@ class StudyRepositoryTest {
 
         //리더멤버 생성
         Member member = new Member();
-        member.setName("kim");
-        member.setEmail("tt@naver.com");
+        member.setMemberName("kim");
+        member.setMemberEmail("tt@naver.com");
         memberService.save(member);
         //스터디 생성
         Study algorithm = new Study();
@@ -64,23 +64,23 @@ class StudyRepositoryTest {
 
 
         //등록
-        Long enroll_id = studyService.enroll(algorithm, member.getId());
+        Long enroll_id = studyService.enroll(algorithm, member.getMemberId());
 
 
         //스터디 가입 해보기
         Member member2 = new Member();
-        member2.setName("yang");
-        member2.setEmail("tt@maver.com");
+        member2.setMemberName("yang");
+        member2.setMemberEmail("tt@maver.com");
         memberService.save(member2);
 
-         studyService.joinStudy(member2.getId(), enroll_id);
+         studyService.joinStudy(member2.getMemberId(), enroll_id);
 
         Member member3 = new Member();
-        member3.setName("kang");
-        member3.setEmail("tt@daum.net");
+        member3.setMemberName("kang");
+        member3.setMemberEmail("tt@daum.net");
         memberService.save(member3);
 
-        studyService.joinStudy(member3.getId(), enroll_id);
+        studyService.joinStudy(member3.getMemberId(), enroll_id);
 
 
 
