@@ -25,7 +25,7 @@ public class StudyService {
 
     @Transactional
     public Long enroll(Study study,Long reader_id){
-        Member member = memberRepository.findById(reader_id);
+        Member member = memberRepository.findByMemberId(reader_id);
         study.leaderMember(member);
 
         Study_Join.createStudyJoin(study, member);
@@ -39,7 +39,7 @@ public class StudyService {
 
     @Transactional
     public Study joinStudy(Long member_id,Long study_id){
-        Member member = memberRepository.findById(member_id);
+        Member member = memberRepository.findByMemberId(member_id);
         Study study= studyRepository.findById(study_id);
 
         Study_Join studyJoin = Study_Join.createStudyJoin(study, member);
