@@ -36,7 +36,11 @@ public class MemberController {
         memberService.save(member);
 
 //        model.addAttribute("study", studyService.selectAllStudy());
+<<<<<<< HEAD
         return "studylist";
+=======
+        return null;
+>>>>>>> 0ec1f0d045a3c2412bd68f528c046879edd4bb0c
     }
 
 }

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="#" th:action="@{/adduser}" th:object="${memberForm}" method="post">
+        <label for="name">Name</label>
+        <input type="text" th:field="*{name}" id="name">
+        <br/>
+        <label for="start">Start Date</label>
+        <input type="date" th:field="*{start}" id="start">
+        <br/>
+        <input type="submit" value="Create Study">
+    </form>
+</body>
+</html>
