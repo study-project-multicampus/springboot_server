@@ -12,8 +12,14 @@ import java.util.Optional;
 @Service
 @Transactional
 public class MemberService {
+
     @Autowired
     MemberRepository memberRepository;
+
+    @Transactional
+    public Member save(Member member){
+        return memberRepository.save(member);
+    }
 
     @Transactional
     public Member save(Member member){
@@ -22,12 +28,14 @@ public class MemberService {
     public Member insertMember(Member member){
         return memberRepository.save(member);
     }
+
     @Transactional(readOnly = true)
     public Member selectMemeber(String memberName){
         Optional<Member> optionalMember = memberRepository.findByMemberName(memberName);
         Member existMember = optionalMember.orElseThrow(() -> new ResourceNotFoundException("Member", "memberName", memberName));
         return existMember;
     }
+
 
 
 }
