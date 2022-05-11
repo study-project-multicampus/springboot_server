@@ -22,10 +22,21 @@ public class Study {
     @Column(name = "study_start")
     private String start;
 
-   @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-   @JoinColumn(name = "member_id")
-   private Member member;
+   @ManyToOne(fetch = FetchType.LAZY)
+   @JoinColumn(name = "leader_id")
+   private Member leader;
 
+   @OneToMany(mappedBy = "study",cascade = CascadeType.ALL)
+    private List<Study_Join> study_joins = new ArrayList<>();
+
+   public void addStudyJoin(Study_Join study_join){
+       study_joins.add(study_join);
+       study_join.setStudy(this);
+   }
+   public void leaderMember(Member member){
+       leader = member;
+       member.getLearningStudy().add(this);
+   }
 
 
 

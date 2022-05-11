@@ -17,13 +17,26 @@ public class Member {
     @Column(name = "member_id")
     private Long id;
 
+    @Column(name = "member_name")
     private String name;
 
+    @Column(name = "member_email")
     private String email;
 
-    @OneToMany(mappedBy = "member")
-    private List<Study> studyList = new ArrayList<>();
+    @Column(name = "member_pw")
+    private String password;
 
+    @OneToMany(mappedBy = "leader")
+    private List<Study> learningStudy = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member")
+    private List<Study_Join> mystudies = new ArrayList<>();
+
+
+    public void addStudyJoin(Study_Join study_join){
+        this.getMystudies().add(study_join);
+        study_join.setMember(this);
+    }
 
 
 }
