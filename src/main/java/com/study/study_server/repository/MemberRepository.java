@@ -6,11 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import javax.persistence.Id;
 import java.util.Optional;
 
-<<<<<<< HEAD
 public interface MemberRepository extends JpaRepository<Member, Id> {
     Member findById(Long id);
-=======
-public interface MemberRepository extends JpaRepository<Member, Long> {
 
     // 회원 생성
     Member save(Member member);
@@ -18,7 +15,4 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
     // memberName 으로 회원 검색
     Optional<Member> findByMemberName(String memberName);
 
-
-
->>>>>>> 0ec1f0d045a3c2412bd68f528c046879edd4bb0c
 }
