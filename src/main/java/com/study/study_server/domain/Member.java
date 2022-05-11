@@ -4,10 +4,9 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -27,6 +26,19 @@ public class Member {
 
     @Column(name = "member_email")
     private String memberEmail;
+
+    @OneToMany(mappedBy = "leader")
+    private List<Study> learningStudy = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member")
+    private List<Study_Join> mystudies = new ArrayList<>();
+
+    public void addStudyJoin(Study_Join study_join){
+        this.getMystudies().add(study_join);
+        study_join.setMember(this);
+    }
+
+
 
     public Member(String memberName, String memberEmail, String memberPw) {
         this.memberName = memberName;
