@@ -39,4 +39,9 @@ public class MemberController {
         return "studylist";
     }
 
+    @GetMapping()
+    public Member selectMemeber(String memberName){
+        return memberService.selectMemeber(memberName);
+    }
+
 }
