@@ -4,6 +4,7 @@ import com.study.study_server.domain.Member;
 import com.study.study_server.domain.Study;
 import com.study.study_server.domain.Study_Join;
 import com.study.study_server.exception.ResourceNotFoundException;
+import com.study.study_server.exception.StudyNotExistException;
 import com.study.study_server.repository.MemberRepository;
 import com.study.study_server.repository.StudyRepository;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -39,7 +41,7 @@ public class StudyService {
     @Transactional
     public Study joinStudy(Long member_id,Long study_id){
         Member member = memberRepository.findByMemberId(member_id);
-        Study study= studyRepository.findById(study_id);
+        Study study= studyRepository.findById(study_id).orElseThrow(()->new StudyNotExistException(study_id));
 
         Study_Join studyJoin = Study_Join.createStudyJoin(study, member);
         study.addStudyJoin(studyJoin);
