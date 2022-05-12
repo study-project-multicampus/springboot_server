@@ -30,7 +30,6 @@ public class StudyService {
 
         Study_Join.createStudyJoin(study, member);
 
-
         studyRepository.save(study);
 
         return study.getId();
