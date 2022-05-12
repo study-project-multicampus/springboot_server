@@ -50,21 +50,15 @@ public class StudyService {
 
     }
 
+    @Transactional(readOnly = true)
+    public List<Study> selectAllStudy(){ return studyRepository.findAll();}
 
+    @Transactional(readOnly = true)
+    public Study selectStudy(Long id){
+        Optional<Study> optionalStudy = studyRepository.findById(id);
+        Study existStudy = optionalStudy.orElseThrow(() -> new ResourceNotFoundException("Study", "id", id));
+        return  existStudy;
 
-
-
-
-
-//    @Transactional(readOnly = true)
-//    public List<Study> selectAllStudy(){ return studyRepository.findAll();}
-//
-//    @Transactional(readOnly = true)
-//    public Study selectStudy(Long id){
-//        Optional<Study> optionalStudy = studyRepository.findById(id);
-//        Study existStudy = optionalStudy.orElseThrow(() -> new ResourceNotFoundException("Study", "id", id));
-//        return  existStudy;
-//
-//    }
+    }
 
 }
