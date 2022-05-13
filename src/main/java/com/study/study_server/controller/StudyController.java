@@ -54,7 +54,7 @@ public class StudyController {
 
         studyService.joinStudy(memberId,studyId);
 
-        return "redirect/";
+        return "redirect:/";
 
     }
 
