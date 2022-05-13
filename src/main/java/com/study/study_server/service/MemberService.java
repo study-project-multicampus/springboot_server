@@ -28,6 +28,9 @@ public class MemberService implements UserDetailsService{
 
     @Transactional
     public Member save(Member member){
+        member.setMemberName(member.getMemberName());
+        member.setMemberPw(passwordEncoder.encode(member.getMemberPw()));
+
         return memberRepository.save(member);
     }
 //    public Member insertMember(Member member){
