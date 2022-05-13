@@ -9,14 +9,14 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-@Getter @Setter
+@Controller
 @RequiredArgsConstructor
 public class StudyController {
 
