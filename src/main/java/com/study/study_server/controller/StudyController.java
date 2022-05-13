@@ -1,7 +1,9 @@
 package com.study.study_server.controller;
 
 import com.study.study_server.controller.form.StudyForm;
+import com.study.study_server.domain.Member;
 import com.study.study_server.domain.Study;
+import com.study.study_server.repository.MemberRepository;
 import com.study.study_server.repository.StudyRepository;
 import com.study.study_server.service.StudyService;
 import com.sun.org.apache.xpath.internal.operations.Mod;
@@ -14,7 +16,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -22,6 +26,7 @@ public class StudyController {
 
     private final StudyRepository studyRepository;
     private final StudyService studyService;
+    private final MemberRepository memberRepository;
 
     @GetMapping("/study/create")
     public String createStudyForm(Model model){
@@ -30,11 +35,16 @@ public class StudyController {
     }
 
     @PostMapping("/study/create")
-    public String studyCreate(StudyForm studyForm, BindingResult result, @RequestParam("reader_id") Long reader_id){
+    public String studyCreate(StudyForm studyForm, Principal principal){
 
         Study study = new Study();
-        BeanUtils.copyProperties(studyForm,study);
-        studyService.enroll(study,reader_id);
+        String membername = principal.getName();
+        Optional<Member> Member = memberRepository.findByMemberName(membername);
+        Member reader = memberRepository.findByMemberId(Member.get().getMemberId());
+        study.setStart(studyForm.getStart());
+        study.setName(studyForm.getName());
+        study.setLeader(reader);
+        studyService.enroll(study,Member.get().getMemberId());
 
         return "redirect:/";
 
