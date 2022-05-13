@@ -26,7 +26,7 @@ class MemberControllerTest {
         member.setMemberName("test");
         member.setMemberPw("ddd");
         member.setMemberEmail("aa@aa.com");
-        memberService.insertMember(member);
+//        memberService.insertMember(member);
 
         Member member1 = memberRepository.findByMemberName(member.getMemberName()).orElseThrow(() -> new IllegalArgumentException("no data"));
 
