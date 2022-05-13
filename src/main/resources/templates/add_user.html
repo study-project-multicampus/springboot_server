@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header"/>
+<body>
+<div class="container my-3">
+    <div>
+        <h1>회원가입</h1>
+    </div>
+    <form method="post" th:action="@{/adduser}" th:object="${memberForm}">
+        <div class="form-group">
+            <label class="form-label" th:for="name">이름</label>
+            <input class="form-control" placeholder="이름 입력해주세요" th:field="*{memberName}" type="text">
+            <span th:class="danger" th:errors="*{memberName}" th:if="${#fields.hasErrors('memberName')}"></span>
+            </br></br>
+        </div>
+        <div class="form-group">
+            <label class="form-label" th:for="password">비밀번호</label>
+            <input class="form-control" placeholder="비밀번호" th:field="*{memberPw}" type="password">
+            <span th:class="danger" th:errors="*{memberPw}" th:if="${#fields.hasErrors('memberPw')}"></span>
+            </br></br>
+        </div>
+        <div class="form-group">
+            <label class="form-label" th:for="email">이메일</label>
+            <input class="form-control" placeholder="이메일 입력해주세요" th:field="*{memberEmail}" type="email">
+            <span th:class="danger" th:errors="*{memberEmail}" th:if="${#fields.hasErrors('memberEmail')}"></span>
+            </br></br>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+    <div th:replace="fragments/footer :: footer"/>
+</div>
+</body>
+</html>

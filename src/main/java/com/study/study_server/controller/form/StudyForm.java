@@ -9,7 +9,7 @@ import javax.validation.constraints.NotBlank;
 public class StudyForm {
     private Long id;
 
-    @NotBlank
+    @NotBlank(message = "이름 필드는 비워둘 수 없습니다.")
     private String name;
 
     @NotBlank

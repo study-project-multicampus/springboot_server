@@ -8,10 +8,11 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.validation.Valid;
 
 @Controller
 @RequiredArgsConstructor
@@ -22,13 +23,13 @@ public class MemberController {
 
     @GetMapping("/signup")
     public String showSignUpForm(MemberForm memberForm) {
-        return "adduser";
+        return "add_user";
     }
 
     @PostMapping("/adduser")
-    public String addUser (MemberForm memberForm, BindingResult result, Model model){
-        if(result.hasErrors()){
-            return "adduser";
+    public String addUser(@Valid MemberForm memberForm, BindingResult result) {
+        if (result.hasErrors()) {
+            return "add_user";
         }
 
         Member member = new Member();
@@ -40,7 +41,7 @@ public class MemberController {
     }
 
     @GetMapping()
-    public Member selectMemeber(String memberName){
+    public Member selectMemeber(String memberName) {
         return memberService.selectMemeber(memberName);
     }
 
