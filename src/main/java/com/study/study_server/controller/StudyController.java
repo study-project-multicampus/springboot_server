@@ -6,7 +6,6 @@ import com.study.study_server.domain.Study;
 import com.study.study_server.repository.MemberRepository;
 import com.study.study_server.repository.StudyRepository;
 import com.study.study_server.service.StudyService;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
