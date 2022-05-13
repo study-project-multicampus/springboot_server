@@ -60,11 +60,12 @@ public class StudyController {
 
 
     @PostMapping("/study/{studyId}/join")
-    public String join_Study(@PathVariable("studyId")Long studyId,Long memberId){
+    public String join_Study(@PathVariable("studyId")Long studyId,Principal principal){
+        String membername = principal.getName();
+        Optional<Member> Member = memberRepository.findByMemberName(membername);
+        studyService.joinStudy(Member.get().getMemberId(), studyId);
 
-        studyService.joinStudy(memberId,studyId);
-
-        return "redirect/";
+        return "redirect:/";
 
     }
 
