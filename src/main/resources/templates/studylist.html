@@ -18,8 +18,9 @@
                 <td th:text="${study.name}"></td>
                 <td th:text="${study.start}"></td>
                 <td>
-                    <a class="btn btn-primary" method="post"
-                       th:href="@{/study/{id}/join (id=${study.id})}">Join</a>
+                    <form method="POST" th:action="@{/study/{id}/join (id=${study.id})}">
+                        <button type="submit" name="submit" value="value" class="btn btn-primary">Join</button>
+                    </form>
                 </td>
             </tr>
         </table>
