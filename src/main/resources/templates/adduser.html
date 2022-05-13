@@ -4,8 +4,7 @@
 <body>
     <div class="container my-3">
         <div>
-
-        <h1>회원가입</h1>
+            <h1>회원가입</h1>
         </div>
         <form role="form" th:action="@{/adduser}" th:object="${memberForm}" method="post">
             <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
