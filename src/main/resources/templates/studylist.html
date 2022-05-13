@@ -11,6 +11,7 @@
                 <th>Leader</th>
                 <th>Name</th>
                 <th>Start Date</th>
+                <th>Member</th>
                 <th>Join</th>
             </tr>
             <tr th:each="study : ${studies}">
@@ -18,6 +19,16 @@
                 <td th:text="${study.name}"></td>
                 <td th:text="${study.start}"></td>
                 <td>
+                    <div th:each="join : ${study.getStudy_joins()}"
+                          th:text="${join.getMember().getMemberName()}" />
+                </td>
+                <td th:if="${study.isMember(#authentication.name)==1}">
+                    <div>비회원 가입불가</div>
+                </td>
+                <td th:if="${study.isMember(#authentication.name)==2}">
+                    <div>가입 중입니다</div>
+                </td>
+                <td th:if="${study.isMember(#authentication.name)==3}">
                     <form method="POST" th:action="@{/study/{id}/join (id=${study.id})}">
                         <button type="submit" name="submit" value="value" class="btn btn-primary">Join</button>
                     </form>
