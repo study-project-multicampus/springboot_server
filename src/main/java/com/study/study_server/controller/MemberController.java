@@ -21,7 +21,7 @@ public class MemberController {
     private final StudyService studyService;
 
     @GetMapping("/signup")
-    public String showSignUpForm() {
+    public String showSignUpForm(MemberForm memberForm) {
         return "adduser";
     }
 
