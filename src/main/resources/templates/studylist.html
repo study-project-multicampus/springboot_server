@@ -8,14 +8,20 @@
         <h2>Study List</h2>
         <table class="table table-striped">
             <tr>
+                <th>Leader</th>
                 <th>Name</th>
                 <th>Start Date</th>
                 <th>Join</th>
             </tr>
             <tr th:each="study : ${studies}">
+                <td th:text="${study.leader.getMemberName()}"></td>
                 <td th:text="${study.name}"></td>
                 <td th:text="${study.start}"></td>
-                <td><a class="btn btn-primary" th:href="@{/join}">Join</a></td>
+                <td>
+                    <a class="btn btn-primary"
+                       th:href="@{/study/{id}/join (id=${study.id})}
+">Join</a>
+                </td>
             </tr>
         </table>
         <p>
