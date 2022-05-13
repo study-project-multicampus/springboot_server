@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<meta charset="UTF-8">
+<head th:replace="fragments/header :: header" />
 <body>
-<h2>Study</h2>
-<form action="#" th:action="@{}" th:object="${studyForm}" method="post">
-    <label for="name">Name</label>
-    <input type="text" th:field="*{name}" id="name">
-    <br>
-    <label for="email">Start Time</label>
-    <input type="date" th:field="*{email}" id="email">
-    </br>
-    <input type="submit" value="Update User">
-</form>
+    <div class="container my-3">
+        <h2>Study</h2>
+        <form action="#" th:action="@{}" th:object="${studyForm}" method="post">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" th:field="*{name}" id="name">
+            </div>
+            <div>
+                <label for="email">Start Time</label>
+                <input type="date" th:field="*{email}" id="email">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        <div th:replace="fragments/footer :: footer"/>
+    </div>
 </body>
 </html>
