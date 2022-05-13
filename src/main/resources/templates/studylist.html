@@ -1,29 +1,29 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layouts/layout}">
-<head>
-    <meta charset="UTF-8">
-    <title>Study List</title>
-</head>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" />
 <body>
-<div layout:fragment="content">
-    <h2>Study List</h2>
-    <table class="table table-striped">
-        <tr>
-            <th>Name</th>
-            <th>Start Date</th>
-            <th>Join</th>
-        </tr>
-        <tr th:each="study : ${study}">
-            <td th:text="${study.name}"></td>
-            <td th:text="${study.start}"></td>
-            <td><a class="btn btn-primary" th:href="@{}">Join</a></td>
-        </tr>
-    </table>
-    <p>
-        <a class="btn btn-primary" href="#">스터디 추가</a>
-    </p>
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+    <div>
+        <h2>Study List</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Name</th>
+                <th>Start Date</th>
+                <th>Join</th>
+            </tr>
+            <tr th:each="study : ${studies}">
+                <td th:text="${studies.name}"></td>
+                <td th:text="${studies.start}"></td>
+                <td><a class="btn btn-primary" th:href="@{}">Join</a></td>
+            </tr>
+        </table>
+        <p>
+            <a class="btn btn-primary" href="#">스터디 추가</a>
+        </p>
+    </div>
+    <div th:replace="fragments/footer :: footer"/>
 </div>
 </body>
+
 </html>
