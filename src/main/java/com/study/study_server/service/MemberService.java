@@ -22,7 +22,7 @@ import java.util.Optional;
 @Transactional
 @RequiredArgsConstructor
 public class MemberService implements UserDetailsService{
-    MemberRepository memberRepository;
+   private final MemberRepository memberRepository;
 
     private final PasswordEncoder passwordEncoder;
 
