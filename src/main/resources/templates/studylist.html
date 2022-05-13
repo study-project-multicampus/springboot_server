@@ -13,9 +13,9 @@
                 <th>Join</th>
             </tr>
             <tr th:each="study : ${studies}">
-                <td th:text="${studies.name}"></td>
-                <td th:text="${studies.start}"></td>
-                <td><a class="btn btn-primary" th:href="@{}">Join</a></td>
+                <td th:text="${study.name}"></td>
+                <td th:text="${study.start}"></td>
+                <td><a class="btn btn-primary" th:href="@{/join}">Join</a></td>
             </tr>
         </table>
         <p>
