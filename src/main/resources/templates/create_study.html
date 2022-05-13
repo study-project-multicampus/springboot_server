@@ -4,7 +4,7 @@
 <body>
     <div class="container">
         <div th:replace="fragments/bodyHeader :: bodyHeader"/>
-        <form action="#" th:action="@{/adduser}" th:object="${memberForm}" method="post">
+        <form action="#" th:action="@{/study/create}" th:object="${memberForm}" method="post">
             <label for="name">Name</label>
             <input type="text" th:field="*{name}" id="name">
             <br/>

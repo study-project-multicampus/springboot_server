@@ -19,7 +19,7 @@
             </tr>
         </table>
         <p>
-            <a class="btn btn-primary" href="#">스터디 추가</a>
+            <a class="btn btn-primary" th:method="get" th:href="@{/study/create}">스터디 추가</a>
         </p>
     </div>
     <div th:replace="fragments/footer :: footer"/>
