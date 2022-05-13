@@ -38,6 +38,14 @@ public class Study {
         member.getLearningStudy().add(this);
     }
 
-
+    public int isMember(String id){
+        if(id=="anonymousUser") return 1;
+        for(int i=0;i<this.study_joins.size();i++){
+            if(study_joins.get(i).getMember().getMemberName().equals(id)){
+                return 2;
+            }
+        }
+        return 3;
+    }
 
 }
