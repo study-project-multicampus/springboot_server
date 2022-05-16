@@ -1,20 +1,22 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/header :: header" />
 <body>
     <div class="container my-3">
         <div th:replace="fragments/bodyHeader :: bodyHeader"/>
-        <form th:action="@{/study/create}" th:object="${form}" method="post">
+        <h2>Study</h2>
+        <form action="#" th:action="@{}" th:object="${studyForm}" method="post">
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" th:field="*{name}" id="name">
             </div>
-            <div class="form-group">
-                <label for="start">Start Date</label>
-                <input type="date" th:field="*{start}" id="start">
+            <div>
+                <label for="start_time">Start Time</label>
+                <input type="date" th:field="*{start}" id="start_time">
             </div>
-            <button type="submit" class="btn btn-primary">Create Study</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+
         <div th:replace="fragments/footer :: footer"/>
     </div>
 </body>
