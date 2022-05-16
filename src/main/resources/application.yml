@@ -1,7 +1,16 @@
 spring:
-  main:
-    allow-circular-references: true
-    allow-bean-definition-overriding: true
+  config:
+    group:
+      "dev": "testdb, default"
+      "prod": "proddb, default"
+
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: testdb
   datasource:
     url: jdbc:h2:tcp://localhost/~/multicam
     username: sa
@@ -17,3 +26,39 @@ spring:
 logging.level:
   org.hibernate.SQL: debug
   #  org.hibernate.type: trace
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: proddb
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${DB}:3306/study_db?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+    username: study
+    password: study
+  jpa:
+    hibernate:
+      ddl-auto: create
+DB: team2project.cryncpn8iv7d.ap-southeast-1.rds.amazonaws.com
+logging:
+  level:
+    com.study.study_server: warn
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: default
+  main:
+    allow-circular-references: true
+    allow-bean-definition-overriding: true
+  jpa:
+    show-sql: true
+logging:
+  file:
+    path: logs
+
+
