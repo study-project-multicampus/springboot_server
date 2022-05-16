@@ -3,6 +3,7 @@
 <head th:replace="fragments/header :: header" />
 <body>
     <div class="container my-3">
+        <div th:replace="fragments/bodyHeader :: bodyHeader"/>
         <h2>Study</h2>
         <form action="#" th:action="@{}" th:object="${studyForm}" method="post">
             <div class="form-group">

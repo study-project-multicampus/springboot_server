@@ -2,16 +2,18 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/header :: header" />
 <body>
-    <div class="container">
+    <div class="container my-3">
         <div th:replace="fragments/bodyHeader :: bodyHeader"/>
         <form th:action="@{/study/create}" th:object="${form}" method="post">
-            <label for="name">Name</label>
-            <input type="text" th:field="*{name}" id="name">
-            <br/>
-            <label for="start">Start Date</label>
-            <input type="date" th:field="*{start}" id="start">
-            <br/>
-            <input type="submit" value="Create Study">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" th:field="*{name}" id="name">
+            </div>
+            <div class="form-group">
+                <label for="start">Start Date</label>
+                <input type="date" th:field="*{start}" id="start">
+            </div>
+            <button type="submit" class="btn btn-primary">Create Study</button>
         </form>
         <div th:replace="fragments/footer :: footer"/>
     </div>
