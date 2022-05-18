@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot
+spec:
+  selector:
+    matchLabels:
+      app: springboot
+  replicas: 1    
+  template:
+    metadata:
+      labels:
+        app: springboot
+    spec:
+      containers:
+      - name: springboot
+        image: solidcopy105/team2project:test
+        ports:
+        - containerPort: 8080
